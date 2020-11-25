@@ -13,6 +13,17 @@ end
 get '/' do
 	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
 end
+get '/showusers' do 
+	db=SQLite3::Database.new 'barbershop.sqlite'
+	db.execute 'select * from Users' do |row|
+		@ro = row
+	end
+
+
+	erb :showusers
+end
+
+
 
 get '/About' do 
 	erb :About 
@@ -42,7 +53,7 @@ post '/visit' do
 
 	db = get_db
 	db.execute 'insert into Users (name, phone, note, barber) 
-	values (?, ?, ?, ?)',[@name, @phone, @note, @barber]
+	 values (?, ?, ?, ?)',[@name, @phone, @note, @barber]
 	erb "Ok! Name: #{@name}, phone: #{@phone}, время запси #{@note}, barber #{@barber}"		
 end 	
 

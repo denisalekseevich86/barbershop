@@ -2,6 +2,16 @@
 	Запись
 </h1>
 
+
+<script type="text/javascript">
+  $(function(){
+
+   $('#datetimepicker').datetimepicker();
+
+  });
+
+</script>
+
 <form action="/visit" method="POST" role="form">
 
   <div class="form-group">
@@ -19,7 +29,7 @@
 
   <div class="form-group">
     <label>время записи</label>
-    <input name="note" type="note" class="form-control" placeholder="Время записи" value="<%= @note %>">
+    <input id="datetimepicker" name="text" type="note" class="form-control" placeholder="Время записи" value="<%= @note %>">
   </div>
 
 
